@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mo Store - متجرك الإلكتروني</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --c1: #313575;
+      --c2: #321951;
+      --c3: #633090;
+      --c4: #B22E37;
+      --c5: #F68318;
+      --c6: #FDC005;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: 'Cairo', sans-serif; 
+      background: #1A0F2E; 
+      color: #FFF8F0;
+      min-height: 100vh;
+    }
+
+    .mo-store { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== NAVBAR ===== */
+    .mo-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 0; border-bottom: 1px solid rgba(246,131,24,0.08);
+      position: sticky; top: 0; background: rgba(26,15,46,0.92);
+      backdrop-filter: blur(20px); z-index: 100;
+    }
+    .mo-nav-logo {
+      font-size: 28px; font-weight: 900; color: #fff; letter-spacing: 2px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .mo-nav-logo::before {
+      content: '◆'; color: var(--c5); font-size: 20px;
+    }
+    .mo-nav-logo span { color: var(--c5); font-weight: 300; }
+    .mo-nav-links { display: flex; gap: 36px; }
+    .mo-nav-links a {
+      color: rgba(255,248,240,0.5); text-decoration: none; font-size: 14px;
+      font-weight: 500; transition: all 0.3s; position: relative;
+    }
+    .mo-nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; right: 0;
+      width: 0; height: 2px; background: var(--c5);
+      transition: width 0.3s;
+    }
+    .mo-nav-links a:hover { color: var(--c5); }
+    .mo-nav-links a:hover::after { width: 100%; }
+    .mo-nav-cta {
+      padding: 10px 28px; border-radius: 10px; border: 1px solid var(--c5);
+      background: transparent; color: var(--c5); font-family: inherit;
+      font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s;
+    }
+    .mo-nav-cta:hover { background: var(--c5); color: #1A0F2E; }
+
+    /* ===== HERO ===== */
+    .mo-hero {
+      text-align: center; padding: 100px 20px 80px; position: relative;
+      overflow: hidden;
+    }
+    .mo-hero-bg {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(99,48,144,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(246,131,24,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(49,53,117,0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .mo-hero-stars {
+      position: absolute; top: 60px; left: 10%; font-size: 100px;
+      opacity: 0.06; pointer-events: none; color: var(--c6);
+    }
+    .mo-hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 24px; border-radius: 50px;
+      background: rgba(246,131,24,0.08); border: 1px solid rgba(246,131,24,0.2);
+      color: var(--c5); font-size: 13px; font-weight: 500; margin-bottom: 32px;
+      position: relative; z-index: 1;
+    }
+    .mo-hero-badge::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--c5); box-shadow: 0 0 16px var(--c5);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .mo-hero h1 {
+      font-size: 56px; font-weight: 800; line-height: 1.1;
+      color: #fff; margin-bottom: 20px; position: relative; z-index: 1;
+      letter-spacing: -1px;
+    }
+    .mo-hero h1 span { 
+      background: linear-gradient(135deg, var(--c5), var(--c6));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .mo-hero p {
+      font-size: 18px; color: rgba(255,248,240,0.45); max-width: 520px;
+      margin: 0 auto 40px; line-height: 1.8; position: relative; z-index: 1;
+    }
+    .mo-hero-btns { 
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+    .mo-btn-primary {
+      padding: 16px 36px; border-radius: 12px; border: none;
+      background: linear-gradient(135deg, var(--c4), var(--c5)); color: #fff;
+      font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+      transition: all 0.3s; text-decoration: none; display: inline-flex; 
+      align-items: center; gap: 8px; box-shadow: 0 4px 24px rgba(178,46,55,0.25);
+    }
+    .mo-btn-primary:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 8px 40px rgba(178,46,55,0.4); 
+    }
+    .mo-btn-secondary {
+      padding: 16px 36px; border-radius: 12px; 
+      border: 1px solid rgba(246,131,24,0.3);
+      background: transparent; color: #FFF8F0; font-family: inherit;
+      font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.3s;
+    }
+    .mo-btn-secondary:hover { 
+      border-color: var(--c5); 
+      background: rgba(246,131,24,0.08); 
+    }
+
+    /* ===== TRUST BAR ===== */
+    .mo-trust {
+      display: flex; justify-content: center; align-items: center; gap: 48px;
+      padding: 32px 0; border-top: 1px solid rgba(246,131,24,0.08);
+      border-bottom: 1px solid rgba(246,131,24,0.08); margin-bottom: 80px;
+      flex-wrap: wrap; position: relative;
+    }
+    .mo-trust-item { 
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,248,240,0.35); font-size: 13px; font-weight: 500; 
+    }
+    .mo-trust-item::before {
+      content: '◆'; color: var(--c5); font-size: 8px;
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .mo-section-title {
+      text-align: center; margin-bottom: 48px;
+    }
+    .mo-section-title h2 {
+      font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 12px;
+    }
+    .mo-section-title p {
+      font-size: 16px; color: rgba(255,248,240,0.4);
+    }
+
+    /* ===== STATS ===== */
+    .mo-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      margin-bottom: 100px;
+    }
+    .mo-stat-card {
+      background: linear-gradient(180deg, rgba(99,48,144,0.06) 0%, transparent 100%);
+      border: 1px solid rgba(246,131,24,0.1); border-radius: 20px;
+      padding: 40px 24px; text-align: center; position: relative; overflow: hidden;
+      transition: all 0.4s;
+    }
+    .mo-stat-card:hover {
+      border-color: rgba(246,131,24,0.2);
+      box-shadow: 0 8px 40px rgba(178,46,55,0.08);
+    }
+    .mo-stat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--c5), transparent);
+    }
+    .mo-stat-num {
+      font-size: 42px; font-weight: 800;
+      background: linear-gradient(135deg, #fff, var(--c5));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 8px;
+    }
+    .mo-stat-label { font-size: 14px; color: rgba(255,248,240,0.35); }
+
+    /* ===== SEARCH & FILTER ===== */
+    .mo-controls {
+      display: flex; gap: 16px; margin-bottom: 48px; flex-wrap: wrap;
+      align-items: center; justify-content: center;
+    }
+    .mo-search {
+      position: relative; flex: 1; max-width: 420px;
+    }
+    .mo-search input {
+      width: 100%; padding: 16px 20px 16px 52px;
+      border: 1px solid rgba(246,131,24,0.15); border-radius: 14px;
+      background: rgba(246,131,24,0.04); color: #FFF8F0;
+      font-family: inherit; font-size: 14px; transition: all 0.3s;
+    }
+    .mo-search input::placeholder { color: rgba(255,248,240,0.25); }
+    .mo-search input:focus {
+      outline: none; border-color: var(--c5); 
+      background: rgba(246,131,24,0.07);
+      box-shadow: 0 0 0 3px rgba(246,131,24,0.1);
+    }
+    .mo-search svg {
+      position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+      width: 20px; height: 20px; fill: rgba(246,131,24,0.4);
+    }
+    .mo-filters { display: flex; gap: 10px; flex-wrap: wrap; }
+    .mo-filter-btn {
+      padding: 12px 24px; border-radius: 10px; 
+      border: 1px solid rgba(246,131,24,0.12);
+      background: transparent; color: rgba(255,248,240,0.45);
+      font-family: inherit; font-size: 13px; font-weight: 500;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .mo-filter-btn.active {
+      background: rgba(246,131,24,0.12); color: var(--c5);
+      border-color: rgba(246,131,24,0.35);
+    }
+    .mo-filter-btn:hover:not(.active) {
+      border-color: rgba(246,131,24,0.25); 
+      color: rgba(255,248,240,0.65);
+    }
+
+    /* ===== PRODUCTS ===== */
+    .mo-products {
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+      gap: 28px;
+      margin-bottom: 100px;
+    }
+    .mo-card {
+      background: linear-gradient(180deg, rgba(50,25,81,0.5) 0%, rgba(26,15,46,0.3) 100%);
+      border: 1px solid rgba(246,131,24,0.1); border-radius: 20px;
+      overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .mo-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(246,131,24,0.3), transparent);
+    }
+    .mo-card:hover {
+      border-color: rgba(246,131,24,0.25);
+      transform: translateY(-6px);
+      box-shadow: 
+        0 24px 60px rgba(0,0,0,0.3),
+        0 0 0 1px rgba(246,131,24,0.08),
+        0 0 60px rgba(246,131,24,0.06);
+    }
+    .mo-card-img {
+      width: 100%; height: 240px;
+      background: linear-gradient(135deg, 
+        rgba(49,53,117,0.4) 0%, 
+        rgba(178,46,55,0.15) 50%, 
+        rgba(246,131,24,0.1) 100%);
+      display: flex; align-items: center; justify-content: center; 
+      position: relative;
+      border-bottom: 1px solid rgba(246,131,24,0.08);
+    }
+    .mo-card-img span { 
+      font-size: 80px; 
+      filter: drop-shadow(0 4px 24px rgba(246,131,24,0.2));
+      transition: transform 0.4s;
+    }
+    .mo-card:hover .mo-card-img span {
+      transform: scale(1.1);
+    }
+    .mo-card-badge {
+      position: absolute; top: 20px; right: 20px;
+      padding: 8px 16px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--c4), var(--c5));
+      color: #fff; font-size: 11px; font-weight: 700;
+      box-shadow: 0 4px 16px rgba(178,46,55,0.3);
+    }
+    .mo-card-body { padding: 28px; }
+    .mo-card-cat {
+      font-size: 11px; font-weight: 600; color: var(--c5);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;
+    }
+    .mo-card-title {
+      font-size: 19px; font-weight: 600; color: #fff;
+      margin-bottom: 10px; line-height: 1.4;
+    }
+    .mo-card-desc {
+      font-size: 14px; color: rgba(255,248,240,0.4);
+      line-height: 1.7; margin-bottom: 24px;
+    }
+    .mo-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 20px; border-top: 1px solid rgba(246,131,24,0.1);
+    }
+    .mo-card-price { display: flex; align-items: baseline; gap: 10px; }
+    .mo-price-current {
+      font-size: 26px; font-weight: 700;
+      background: linear-gradient(135deg, var(--c6), var(--c5));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .mo-price-old {
+      font-size: 14px; color: rgba(255,248,240,0.25); text-decoration: line-through;
+    }
+    .mo-card-btn {
+      padding: 12px 24px; border-radius: 12px; border: none;
+      background: linear-gradient(135deg, #25D366, #128C7E); color: #fff;
+      font-family: inherit; font-size: 13px; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; gap: 8px;
+      transition: all 0.3s; text-decoration: none;
+    }
+    .mo-card-btn:hover {
+      transform: scale(1.05); 
+      box-shadow: 0 6px 24px rgba(37,211,102,0.3);
+    }
+    .mo-card-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* ===== CTA SECTION ===== */
+    .mo-cta-section {
+      text-align: center; padding: 80px 40px; margin-bottom: 80px;
+      background: linear-gradient(180deg, rgba(99,48,144,0.04) 0%, transparent 100%);
+      border: 1px solid rgba(246,131,24,0.1); border-radius: 24px;
+      position: relative; overflow: hidden;
+    }
+    .mo-cta-section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--c5), transparent);
+    }
+    .mo-cta-section h3 {
+      font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 16px;
+    }
+    .mo-cta-section p {
+      font-size: 16px; color: rgba(255,248,240,0.4); margin-bottom: 32px;
+    }
+
+    /* ===== FOOTER ===== */
+    .mo-footer {
+      border-top: 1px solid rgba(246,131,24,0.08); 
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+    .mo-footer-logo {
+      font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 12px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .mo-footer-logo::before {
+      content: '◆'; color: var(--c5); font-size: 24px;
+    }
+    .mo-footer-logo span { color: var(--c5); font-weight: 300; }
+    .mo-footer-text { 
+      font-size: 15px; color: rgba(255,248,240,0.35); margin-bottom: 28px; 
+    }
+    .mo-footer-social { display: flex; justify-content: center; gap: 14px; }
+    .mo-footer-social a {
+      width: 48px; height: 48px; border-radius: 14px;
+      border: 1px solid rgba(246,131,24,0.15);
+      background: rgba(246,131,24,0.04);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,248,240,0.4); transition: all 0.3s; text-decoration: none;
+    }
+    .mo-footer-social a:hover {
+      border-color: var(--c5); 
+      background: rgba(246,131,24,0.1); 
+      color: var(--c5);
+      transform: translateY(-3px);
+    }
+    .mo-footer-copy {
+      margin-top: 40px; font-size: 12px; color: rgba(255,248,240,0.15);
+    }
+
+    /* ===== EMPTY ===== */
+    .mo-empty { text-align: center; padding: 100px 20px; grid-column: 1/-1; }
+    .mo-empty-icon { font-size: 64px; margin-bottom: 20px; opacity: 0.3; }
+    .mo-empty p { color: rgba(255,248,240,0.3); font-size: 16px; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1A0F2E; }
+    ::-webkit-scrollbar-thumb { background: var(--c4); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--c5); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .mo-hero h1 { font-size: 36px; }
+      .mo-nav-links { display: none; }
+      .mo-stats { grid-template-columns: 1fr; }
+      .mo-products { grid-template-columns: 1fr; }
+      .mo-trust { gap: 24px; }
+      .mo-cta-section { padding: 50px 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="mo-store">
+
+  <!-- NAVBAR -->
+  <nav class="mo-nav">
+    <div class="mo-nav-logo">MO <span>STORE</span></div>
+    <div class="mo-nav-links">
+      <a href="#products">المنتجات</a>
+      <a href="#stats">إحصائيات</a>
+      <a href="#contact">تواصل</a>
+    </div>
+    <button class="mo-nav-cta" onclick="window.open('https://wa.me/201000000000','_blank')">اطلب الآن</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="mo-hero">
+    <div class="mo-hero-bg"></div>
+    <div class="mo-hero-stars">✦</div>
+    <div class="mo-hero-badge">متجر موثوق في مصر</div>
+    <h1>أفضل المنتجات<br><span>بأحسن الأسعار</span></h1>
+    <p>اكتشف تشكيلة واسعة من المنتجات المتميزة مع توصيل سريع لكل مكان في مصر ودعم مباشر على واتساب</p>
+    <div class="mo-hero-btns">
+      <a href="#products" class="mo-btn-primary">تصفح المنتجات →</a>
+      <button class="mo-btn-secondary" onclick="window.open('https://t.me/+nVJF3QZpnQMzMGU0','_blank')">انضم لجروبنا</button>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="mo-trust">
+    <span class="mo-trust-item">توصيل سريع</span>
+    <span class="mo-trust-item">دفع عند الاستلام</span>
+    <span class="mo-trust-item">منتجات أصلية</span>
+    <span class="mo-trust-item">دعم واتساب 24/7</span>
+    <span class="mo-trust-item">إرجاع سهل</span>
+  </div>
+
+  <!-- STATS -->
+  <section class="mo-stats" id="stats">
+    <div class="mo-stat-card">
+      <div class="mo-stat-num">500+</div>
+      <div class="mo-stat-label">عميل سعيد</div>
+    </div>
+    <div class="mo-stat-card">
+      <div class="mo-stat-num">120+</div>
+      <div class="mo-stat-label">منتج متاح</div>
+    </div>
+    <div class="mo-stat-card">
+      <div class="mo-stat-num">48h</div>
+      <div class="mo-stat-label">توصيل سريع</div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="mo-section-title">
+      <h2>منتجاتنا المميزة</h2>
+      <p>اختار من تشكيلتنا الواسعة واطلب مباشرة على واتساب</p>
+    </div>
+
+    <div class="mo-controls">
+      <div class="mo-search">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+      </div>
+      <div class="mo-filters" id="categoryFilter">
+        <button class="mo-filter-btn active" data-cat="all">الكل</button>
+        <button class="mo-filter-btn" data-cat="electronics">إلكترونيات</button>
+        <button class="mo-filter-btn" data-cat="fashion">أزياء</button>
+        <button class="mo-filter-btn" data-cat="home">منزلية</button>
+        <button class="mo-filter-btn" data-cat="beauty">جمال</button>
+      </div>
+    </div>
+
+    <div class="mo-products" id="productsGrid"></div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <div class="mo-cta-section">
+    <h3>عندك سؤال؟</h3>
+    <p>فريقنا جاهز يساعدك على واتساب في أي وقت</p>
+    <a href="https://wa.me/201000000000" class="mo-btn-primary" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      تواصل معنا
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="mo-footer" id="contact">
+    <div class="mo-footer-logo">MO <span>STORE</span></div>
+    <p class="mo-footer-text">متجرك الموثوق في مصر — جودة، سرعة، ثقة</p>
+    <div class="mo-footer-social">
+      <a href="https://t.me/+nVJF3QZpnQMzMGU0" target="_blank" title="Telegram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      </a>
+      <a href="https://wa.me/201000000000" target="_blank" title="WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+    <p class="mo-footer-copy">Mo Store © 2026 — جميع الحقوق محفوظة</p>
+  </footer>
+
+</div>
+
+<script>
+  const products = [
+    { id: 1, name: "سماعات بلوتوث لاسلكية", desc: "صوت نقي، بطارية 30 ساعة، مقاومة للماء IPX5", price: 450, oldPrice: 650, category: "electronics", emoji: "🎧", badge: "خصم 30%" },
+    { id: 2, name: "ساعة ذكية متعددة الوظائف", desc: "تتبع اللياقة، قياس نبضات القلب، إشعارات ذكية", price: 899, oldPrice: 1200, category: "electronics", emoji: "⌚", badge: "الأكثر مبيعاُ" },
+    { id: 3, name: "تيشيرت قطن 100%", desc: "خامة ممتازة، مقاسات من S لـ 3XL، ألوان متعددة", price: 199, oldPrice: 299, category: "fashion", emoji: "👕", badge: null },
+    { id: 4, name: "حقيبة يد أنيقة", desc: "جلد صناعي عالي الجودة، تصميم عصري أنيق", price: 350, oldPrice: 500, category: "fashion", emoji: "👜", badge: "جديد" },
+    { id: 5, name: "خلاط كهربائي متعدد", desc: "4 سرعات، سعة 1.5 لتر، سهل التنظيف تماماُ", price: 550, oldPrice: 750, category: "home", emoji: "🍹", badge: "خصم" },
+    { id: 6, name: "طقم أواني طهي 5 قطع", desc: "غير لاصقة، مقاومة للحرارة، مناسبة لجميع الأفران", price: 1200, oldPrice: 1600, category: "home", emoji: "🍳", badge: null },
+    { id: 7, name: "مجموعة عناية بالبشرة", desc: "6 منتجات طبيعية 100% للعناية اليومية الكاملة", price: 399, oldPrice: 550, category: "beauty", emoji: "✨", badge: "عرض خاص" },
+    { id: 8, name: "مكواة شعر احترافية", desc: "سيراميك، 5 درجات حرارة، حماية متقدمة من الحرارة", price: 299, oldPrice: 450, category: "beauty", emoji: "💇", badge: null },
+    { id: 9, name: "شاحن لاسلكي سريع 15W", desc: "متوافق مع جميع الأجهزة، تصميم أنيق ورفيع", price: 180, oldPrice: 250, category: "electronics", emoji: "🔋", badge: null },
+    { id: 10, name: "جاكيت شتوي دافئ", desc: "مبطن، مقاوم للماء، ألوان متعددة، مقاسات كاملة", price: 650, oldPrice: 900, category: "fashion", emoji: "🧥", badge: "شتاء 2026" },
+    { id: 11, name: "مرتبة ميموري فوم", desc: "راحة فائقة، دعم للظهر، مقاس 120×200 سم", price: 2500, oldPrice: 3200, category: "home", emoji: "🛏️", badge: null },
+    { id: 12, name: "عطر فاخر 100 مل", desc: "ثبات 24 ساعة، رائحة جذابة وفريدة", price: 499, oldPrice: 700, category: "beauty", emoji: "🌸", badge: "كمية محدودة" }
+  ];
+
+  let currentCategory = 'all';
+  let searchQuery = '';
+  const phoneNumber = '201000000000'; // ⚠️ غيّر ده لرقم واتسابك الحقيقي
+
+  const catNames = {
+    electronics: 'إلكترونيات', fashion: 'أزياء', home: 'منزلية', beauty: 'جمال'
+  };
+
+  function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    let filtered = products;
+    if (currentCategory !== 'all') filtered = filtered.filter(p => p.category === currentCategory);
+    if (searchQuery) filtered = filtered.filter(p => p.name.includes(searchQuery) || p.desc.includes(searchQuery));
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div class="mo-empty"><div class="mo-empty-icon">🔍</div><p>مفيش منتجات مطابقة للبحث</p></div>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map(p => `
+      <div class="mo-card">
+        <div class="mo-card-img">
+          ${p.badge ? `<span class="mo-card-badge">${p.badge}</span>` : ''}
+          <span>${p.emoji}</span>
+        </div>
+        <div class="mo-card-body">
+          <div class="mo-card-cat">${catNames[p.category] || p.category}</div>
+          <h3 class="mo-card-title">${p.name}</h3>
+          <p class="mo-card-desc">${p.desc}</p>
+          <div class="mo-card-footer">
+            <div class="mo-card-price">
+              <span class="mo-price-current">${p.price} ج.م</span>
+              ${p.oldPrice ? `<span class="mo-price-old">${p.oldPrice}</span>` : ''}
+            </div>
+            <a class="mo-card-btn" href="https://wa.me/${phoneNumber}?text=${encodeURIComponent(`مرحبا Mo Store! 👋\nأنا مهتم بشراء:\n📦 ${p.name}\n💰 السعر: ${p.price} ج.م\n\nأرجو التواصل معي للتفاصيل.`)}" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              اطلب
+            </a>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  document.getElementById('categoryFilter').addEventListener('click', (e) => {
+    if (e.target.classList.contains('mo-filter-btn')) {
+      document.querySelectorAll('.mo-filter-btn').forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      currentCategory = e.target.dataset.cat;
+      renderProducts();
+    }
+  });
+
+  document.getElementById('searchInput').addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    renderProducts();
+  });
+
+  renderProducts();
+</script>
+</body>
+</html>
