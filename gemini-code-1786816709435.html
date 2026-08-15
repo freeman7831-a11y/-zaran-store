@@ -1,0 +1,207 @@
+<body>
+
+<div class="sky"></div>
+<div class="grain"></div>
+<div class="stars" id="stars"></div>
+<canvas id="confetti"></canvas>
+<div id="balloons"></div>
+
+<main>
+
+  <section class="hero">
+    <span class="hero-eyebrow">اليوم هو يومك</span>
+    <h1>عيد ميلاد سعيد يا <span class="name">هاجر</span></h1>
+    <p class="sub">خمسة وعشرون شمعة، وكل واحدة منها حكاية تستاهل الاحتفال.</p>
+    <div class="candles" aria-hidden="true">
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+    </div>
+    <span class="scroll-hint">مرري للأسفل ↓</span>
+  </section>
+
+  <section>
+    <span class="section-label">رسالة</span>
+    <h2 class="section-title">كلمتين من القلب</h2>
+    <div class="letter">
+      <p>هاجر، السنة اللي فاتت شفناك تكبري وتقوي وتضحكي حتى بأصعب الأيام. الطاقة اللي تجيبيها لأي غرفة تدخليها شي ما يتعوض.</p>
+      <p>نتمنى لك سنة مليانة فرص جديدة، ناس صادقين، وأيام ما تحتاجين فيها تثبتي شي لحد — بس تعيشي وتستمتعي.</p>
+      <p class="signature">كل عام وأنتِ بخير 🕯️</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">أمنيات</span>
+    <h2 class="section-title">اللي نتمناه لك</h2>
+    <div class="wishes">
+      <div class="wish-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg>
+        <h3>صحة تدوم</h3>
+        <p>جسم يقدر يحمل كل الأحلام اللي في راسك، وطاقة تكفي ليوم طويل من الضحك.</p>
+      </div>
+      <div class="wish-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.6 5.8L21 9.3l-4.5 4.1L17.8 20 12 16.6 6.2 20l1.3-6.6L3 9.3l6.4-.5L12 3z" stroke-linejoin="round"/></svg>
+        <h3>نجاح يليق فيك</h3>
+        <p>كل خطوة تسويها هالسنة تقربك من الشي اللي تستاهلينه فعلاً.</p>
+      </div>
+      <div class="wish-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 8.6c0 5.6-8.8 10.6-8.8 10.6S3.2 14.2 3.2 8.6a4.6 4.6 0 018.8-1.9A4.6 4.6 0 0120.8 8.6z" stroke-linejoin="round"/></svg>
+        <h3>حب حقيقي</h3>
+        <p>ناس تشوفك بعينهم الصح، وتقدر تكون بجانبك بدون ما تطلبيه.</p>
+      </div>
+      <div class="wish-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V6a2 2 0 012-2h9l5 5v10a2 2 0 01-2 2H6a2 2 0 01-2-2z" stroke-linejoin="round"/><path d="M9 3v4h6" stroke-linejoin="round"/></svg>
+        <h3>ذكريات تتجمع</h3>
+        <p>رحلات وسهرات ولحظات صغيرة تصير قصص تحكينها بعد سنين.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cake-wrap">
+    <span class="section-label">آخر لمسة</span>
+    <h2 class="section-title">اطفي الشموع وتمني أمنية</h2>
+    <svg class="cake" id="cakeSvg" viewBox="0 0 300 260" role="button" aria-label="اضغطي لإطفاء الشموع">
+      <ellipse cx="150" cy="230" rx="120" ry="18" fill="#e6317a" opacity="0.9"/>
+      <rect x="50" y="150" width="200" height="80" rx="14" fill="#8c4fd1"/>
+      <rect x="50" y="150" width="200" height="16" fill="#f7cf8a" opacity="0.5"/>
+      <rect x="70" y="100" width="160" height="60" rx="12" fill="#e6317a"/>
+      <rect x="70" y="100" width="160" height="12" fill="#f7cf8a" opacity="0.5"/>
+      <g id="flames">
+        <g class="flame-g" data-i="0"><rect x="95" y="72" width="7" height="30" rx="3" fill="#f2a93b"/><ellipse class="flame" cx="98.5" cy="66" rx="6" ry="12" fill="#f7cf8a"/></g>
+        <g class="flame-g" data-i="1"><rect x="145" y="66" width="7" height="36" rx="3" fill="#f2a93b"/><ellipse class="flame" cx="148.5" cy="58" rx="6" ry="12" fill="#f7cf8a"/></g>
+        <g class="flame-g" data-i="2"><rect x="197" y="72" width="7" height="30" rx="3" fill="#f2a93b"/><ellipse class="flame" cx="200.5" cy="66" rx="6" ry="12" fill="#f7cf8a"/></g>
+      </g>
+    </svg>
+    <div>
+      <button class="cake-btn" id="blowBtn">اطفي الشموع 🕯️</button>
+      <p class="cake-msg" id="cakeMsg">تحققت الأمنية. كل عام وأنتِ بخير يا هاجر 🎉</p>
+    </div>
+  </section>
+
+  <footer>
+    صُنعت بمحبة لأجل هاجر — عيد ميلاد سعيد
+  </footer>
+
+</main>
+
+<script>
+// starfield
+(function(){
+  const container = document.getElementById('stars');
+  const n = 60;
+  for (let i = 0; i < n; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.top = Math.random()*100 + 'vh';
+    s.style.animationDelay = (Math.random()*3.4) + 's';
+    container.appendChild(s);
+  }
+})();
+
+// floating balloons
+(function(){
+  const colors = ['#e6317a', '#8c4fd1', '#f2a93b'];
+  const container = document.getElementById('balloons');
+  const count = 6;
+  for (let i = 0; i < count; i++) {
+    const b = document.createElement('div');
+    b.className = 'balloon';
+    b.style.left = (10 + Math.random()*80) + 'vw';
+    b.style.background = `radial-gradient(circle at 35% 30%, ${colors[i % colors.length]}, ${colors[i % colors.length]}cc)`;
+    const duration = 14 + Math.random()*10;
+    b.style.animationDuration = duration + 's';
+    b.style.animationDelay = (Math.random()*duration) + 's';
+    container.appendChild(b);
+  }
+})();
+
+// confetti burst
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+resize();
+addEventListener('resize', resize);
+
+let particles = [];
+const confettiColors = ['#e6317a', '#f2a93b', '#8c4fd1', '#f7cf8a'];
+
+function burst(x, y, count) {
+  for (let i = 0; i < count; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 3 + Math.random() * 7;
+    particles.push({
+      x, y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 3,
+      size: 4 + Math.random() * 5,
+      color: confettiColors[Math.floor(Math.random()*confettiColors.length)],
+      rot: Math.random() * Math.PI,
+      vr: (Math.random() - 0.5) * 0.3,
+      life: 0,
+      maxLife: 90 + Math.random() * 40
+    });
+  }
+}
+
+function tick() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles = particles.filter(p => p.life < p.maxLife);
+  for (const p of particles) {
+    p.vy += 0.12;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.rot += p.vr;
+    p.life++;
+    const alpha = 1 - p.life / p.maxLife;
+    ctx.save();
+    ctx.globalAlpha = Math.max(alpha, 0);
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+    ctx.restore();
+  }
+  requestAnimationFrame(tick);
+}
+tick();
+
+// initial celebratory burst on load
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    burst(canvas.width/2, canvas.height*0.3, 90);
+  }, 500);
+});
+
+// blow out candles interaction
+const flames = document.querySelectorAll('.flame-g');
+const blowBtn = document.getElementById('blowBtn');
+const cakeMsg = document.getElementById('cakeMsg');
+let blown = false;
+
+function blowOut() {
+  if (blown) return;
+  blown = true;
+  flames.forEach((f, i) => {
+    setTimeout(() => {
+      f.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      f.style.transformOrigin = 'bottom center';
+      f.style.opacity = '0';
+      f.style.transform = 'scaleY(0.2)';
+    }, i * 160);
+  });
+  setTimeout(() => {
+    const rect = document.getElementById('cakeSvg').getBoundingClientRect();
+    burst(rect.left + rect.width/2, rect.top + rect.height*0.3, 140);
+    cakeMsg.classList.add('show');
+  }, flames.length * 160 + 200);
+}
+
+blowBtn.addEventListener('click', blowOut);
+document.getElementById('cakeSvg').addEventListener('click', blowOut);
+</script>
+
+</body>
+</html>
